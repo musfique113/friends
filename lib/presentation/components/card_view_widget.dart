@@ -22,10 +22,37 @@ class DetailsCardWidget extends StatelessWidget {
       child: Card(
         child: Column(
           children: [
-            Image.network(friend.portraitUrl),
-            Text(friend.fullName),
-            Text(friend.country),
+            const SizedBox(height: 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(friend.portraitUrl),
+                  radius: 50,
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  friend.fullName,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                Text(
+                  friend.country,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ],
+
         ),
       ),
     );

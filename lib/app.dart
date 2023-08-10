@@ -11,8 +11,9 @@ class FriendsApp extends StatelessWidget {
       title: 'Friends App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
+        fontFamily: "Poppins",
       ),
       home: HomeScreen(),
     );

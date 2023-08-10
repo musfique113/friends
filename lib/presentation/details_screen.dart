@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:friends/data/models.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class DetailPageScreen extends StatelessWidget {
-
   final Data friend;
 
   const DetailPageScreen({super.key, required this.friend});
@@ -27,19 +25,53 @@ class DetailPageScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Friend Details'),
       ),
-      body: Column(
-        children: [
-          Image.network(friend.portraitUrl),
-          Text(friend.fullName),
-          Text('Address: ${friend.address}'),
-          Text('City, State, Country: ${friend.city}, ${friend.state}, ${friend.country}'),
-          Text('Email: ${friend.email}'),
-          Text('Cell Phone: ${friend.cellPhone}'),
-          ElevatedButton(
-            onPressed: launchEmail,
-            child: const Text('Send Email'),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(friend.portraitUrl),
+                radius: 100,
+              ),
+              SizedBox(height: 10),
+              Text(
+                friend.fullName,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Address: ${friend.address}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'City, State, Country: ${friend.city}, ${friend.state}, ${friend.country}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Email: ${friend.email}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Cell Phone: ${friend.cellPhone}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: launchEmail,
+                child: const Text('Send Email'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
