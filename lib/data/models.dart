@@ -26,7 +26,7 @@ class Data {
 
 class DataService {
   Future<List<Data>> fetchData() async {
-    final response = await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
+    final response = await http.get(Uri.parse('https://randomuser.me/api/?results=100'));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);

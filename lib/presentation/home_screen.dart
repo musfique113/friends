@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:friends/data/models.dart';
 import 'package:friends/presentation/components/grid_view_widget.dart';
 
-
 class HomeScreen extends StatelessWidget {
-
   final DataService _friendService = DataService();
 
-  HomeScreen({super.key});
+  HomeScreen({super.key, required Orientation orientation});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Friends Details'),
-        centerTitle:true ,
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: _friendService.fetchData(),
@@ -32,10 +30,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-

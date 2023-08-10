@@ -11,7 +11,6 @@ class DetailPageScreen extends StatelessWidget {
     var emailPath = friend.email;
     var head = "mailto:";
     var url = "$head$emailPath";
-    print(url);
     if (await canLaunchUrl(url as Uri)) {
       await launchUrl(url as Uri);
     } else {
@@ -37,11 +36,14 @@ class DetailPageScreen extends StatelessWidget {
                 radius: 100,
               ),
               SizedBox(height: 10),
-              Text(
-                friend.fullName,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                  friend.fullName,
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 5),
@@ -51,7 +53,17 @@ class DetailPageScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                'City, State, Country: ${friend.city}, ${friend.state}, ${friend.country}',
+                'City: ${friend.city}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'State: ${friend.state}',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Country: ${friend.country}',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 5),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:friends/data/models.dart';
 import 'package:friends/presentation/details_screen.dart';
 
-
 class DetailsCardWidget extends StatelessWidget {
   final Data friend;
 
@@ -52,7 +51,6 @@ class DetailsCardWidget extends StatelessWidget {
               ],
             ),
           ],
-
         ),
       ),
     );
