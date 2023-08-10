@@ -1,39 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:friends/data/models.dart';
+import 'package:friends/presentation/components/grid_view_widget.dart';
+
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
 
-  final List<Map> test =
-      List.generate(100, (index) => {"id": index, "name": "Product $index"})
-          .toList();
+  final DataService _friendService = DataService();
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Friends App"),
+        title: const Text('Friends Details'),
+        centerTitle:true ,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemBuilder: (_, index) {
-              return Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(15)),
-                child: Text(
-                  test[index]["name"],
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              );
-            }),
+      body: FutureBuilder(
+        future: _friendService.fetchData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return const Center(child: Text('Error loading friends'));
+          } else {
+            List<Data> friends = snapshot.data as List<Data>;
+            return GridViewWidget(friends: friends);
+          }
+        },
       ),
     );
   }
 }
+
+
+
+
+
+
+
