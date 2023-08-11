@@ -14,6 +14,10 @@ A responsive Flutter app fetching and showcasing a grid of users from https://ra
 
 <img src="https://github.com/musfique113/friends/assets/53111065/42725d03-9406-4214-b922-386a9a3cf674" alt="lds1" height="200" width="400">
 
+## Preview
+
+<img src="assets/friends.gif" alt="Screenshot1" height="500" width="250">
+
 ## API 
 
 ``
