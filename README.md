@@ -1,4 +1,5 @@
 # friends
+[![wakatime](https://wakatime.com/badge/user/18368562-fe00-4dd1-a78f-9403210fea47/project/4256cada-bb65-4454-99b6-a849e7750f84.svg)](https://wakatime.com/@musfique113/projects/hpeiyhtxnb?start=2023-08-05&end=2023-08-11)
 
 A responsive Flutter app fetching and showcasing a grid of users from https://randomuser.me, with each user displayed on a card featuring portrait, full name, and country. Tapping on a card navigates to a detailed view revealing address, city, state, country, email, and cell phone, with the ability to send them an email directly.
 
