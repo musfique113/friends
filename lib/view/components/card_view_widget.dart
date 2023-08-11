@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:friends/data/models.dart';
-import 'package:friends/presentation/details_screen.dart';
+import 'package:friends/models/models.dart';
+import 'package:friends/view/details_screen.dart';
+import 'package:get/get.dart';
 
 class DetailsCardWidget extends StatelessWidget {
   final Data friend;
@@ -11,12 +12,7 @@ class DetailsCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailPageScreen(friend: friend),
-          ),
-        );
+        Get.to(() => DetailPageScreen(friend: friend));
       },
       child: Card(
         child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:friends/presentation/home_screen.dart';
+import 'package:friends/view/home_screen.dart';
+import 'package:get/get.dart';
 
 class FriendsApp extends StatelessWidget {
   const FriendsApp({super.key});
@@ -7,7 +8,7 @@ class FriendsApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         title: 'Friends App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -19,7 +20,6 @@ class FriendsApp extends StatelessWidget {
           builder: (context, orientation) {
             return HomeScreen(orientation: orientation);
           },
-        )
-    );
+        ));
   }
 }

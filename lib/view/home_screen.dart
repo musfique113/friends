@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:friends/data/models.dart';
-import 'package:friends/presentation/components/grid_view_widget.dart';
+import 'package:friends/controllers/controller.dart';
+import 'package:friends/models/models.dart';
+import 'package:friends/services/data_services.dart';
+import 'package:friends/view/components/grid_view_widget.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   final DataService _friendService = DataService();
@@ -11,19 +14,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Friends Details'),
-        centerTitle: true,
+        title: const Text('Friends HomeScreen'),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<Data>>(
         future: _friendService.fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return const Center(child: Text('Error loading friends'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No friends to display'));
           } else {
-            List<Data> friends = snapshot.data as List<Data>;
-            return GridViewWidget(friends: friends);
+            final friendsController = Get.put(DataController());
+            friendsController.friends.value = snapshot.data!;
+            return GridViewWidget();
           }
         },
       ),
