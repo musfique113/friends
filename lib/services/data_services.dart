@@ -15,8 +15,7 @@ class DataService {
 
       data['results'].forEach((friendData) {
         details.add(Data(
-          fullName:
-              friendData['name']['first'] + ' ' + friendData['name']['last'],
+          fullName: friendData['name']['first'] + ' ' + friendData['name']['last'],
           portraitUrl: friendData['picture']['large'],
           country: friendData['location']['country'],
           address: friendData['location']['street']['name'],
@@ -24,6 +23,7 @@ class DataService {
           state: friendData['location']['state'],
           email: friendData['email'],
           cellPhone: friendData['cell'],
+          gender: friendData['gender']
         ));
       });
 

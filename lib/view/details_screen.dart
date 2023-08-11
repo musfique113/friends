@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:friends/models/models.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailPageScreen extends StatelessWidget {
@@ -105,6 +106,11 @@ class DetailPageScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          const SizedBox(height: 5),
+          Text(
+            'Gender: ${friend.gender.capitalizeFirst}',
+            style: const TextStyle(fontSize: 16),
           ),
           const SizedBox(height: 5),
           Text(

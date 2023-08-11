@@ -7,6 +7,7 @@ class Data {
   final String state;
   final String email;
   final String cellPhone;
+  final String gender;
 
   Data({
     required this.fullName,
@@ -17,5 +18,6 @@ class Data {
     required this.state,
     required this.email,
     required this.cellPhone,
+    required this.gender
   });
 }
