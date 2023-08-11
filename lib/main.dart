@@ -4,4 +4,3 @@ import 'package:friends/app.dart';
 void main() {
   runApp(const FriendsApp());
 }
-

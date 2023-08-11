@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:friends/data/models.dart';
+import 'package:friends/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailPageScreen extends StatelessWidget {
