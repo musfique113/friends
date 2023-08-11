@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 class FriendsApp extends StatelessWidget {
   const FriendsApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

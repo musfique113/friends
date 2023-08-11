@@ -1,5 +1,3 @@
-
-
 class Data {
   final String fullName;
   final String portraitUrl;
