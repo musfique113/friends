@@ -4,22 +4,25 @@ import 'package:friends/view/components/card_view_widget.dart';
 import 'package:get/get.dart';
 
 class GridViewWidget extends StatelessWidget {
-  final DataController friendsController = Get.find();
+  final DataController dataController = Get.find();
+  final Orientation orientation;
 
-  GridViewWidget({super.key});
+  GridViewWidget({super.key, required this.orientation});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
-          itemCount: friendsController.friends.length,
-          itemBuilder: (context, index) {
-            return DetailsCardWidget(friend: friendsController.friends[index]);
-          },
-        ));
+    return Obx(() {
+      return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: dataController.friends.length,
+        itemBuilder: (context, index) {
+          return DetailsCardWidget(friend: dataController.friends[index]);
+        },
+      );
+    });
   }
 }

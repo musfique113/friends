@@ -20,15 +20,20 @@ class HomeScreen extends StatelessWidget {
         future: _friendService.fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: Text('Error loading friends'));
+            return Center(child: Text('Error loading friends'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No friends to display'));
+            return Center(child: Text('No friends to display'));
           } else {
             final friendsController = Get.put(DataController());
             friendsController.friends.value = snapshot.data!;
-            return GridViewWidget();
+            return OrientationBuilder(
+              // Wrap the FriendsGrid in an OrientationBuilder
+              builder: (context, orientation) {
+                return GridViewWidget(orientation: orientation);
+              },
+            );
           }
         },
       ),
