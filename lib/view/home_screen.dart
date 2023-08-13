@@ -6,25 +6,26 @@ import 'package:friends/view/components/grid_view_widget.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  final DataService _friendService = DataService();
 
-  HomeScreen({super.key, required Orientation orientation});
+        final DataService _friendService = DataService();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Friends HomeScreen'),
-      ),
+    HomeScreen({super.key, required Orientation orientation});
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Friends HomeScreen'),
+        ),
       body: FutureBuilder<List<Data>>(
         future: _friendService.fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading friends'));
+            return const Center(child: Text('Error loading friends'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No friends to display'));
+            return const Center(child: Text('No friends to display'));
           } else {
             final friendsController = Get.put(DataController());
             friendsController.friends.value = snapshot.data!;
